@@ -1,0 +1,15 @@
+stages:
+  ingest:
+    cmd: python src/data/ingest_data.py --symbol BTC-USD
+    deps:
+      - src/data/ingest_data.py
+    outs:
+      - data/btc-usd_historical.csv
+  train:
+    cmd: python src/model/train.py
+    deps:
+      - data/btc-usd_historical.csv
+      - src/model/train.py
+    metrics:
+      - src/model/artifacts/prophet_model.json:
+          cache: false
