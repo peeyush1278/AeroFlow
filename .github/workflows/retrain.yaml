@@ -1,0 +1,38 @@
+name: AeroFlow Retrain Pipeline
+
+on:
+  push:
+    paths:
+      - 'data/**'
+  workflow_dispatch:
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/checkout@v3
+        with:
+          python-version: '3.11'
+
+      - name: Install DVC & Dependencies
+        run: |
+          pip install dvc[s3] mlflow xgboost pandas yfinance dagshub python-dotenv
+
+      - name: Configure DVC Remote
+        env:
+          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+        run: |
+          dvc remote add -d origin https://dagshub.com/${{ github.repository_owner }}/AeroFlow.dvc --local
+          dvc remote modify origin --local auth basic
+          dvc remote modify origin --local user ${{ github.repository_owner }}
+          dvc remote modify origin --local password $DAGSHUB_TOKEN
+
+      - name: Run DVC Repro
+        run: dvc repro
+
+      - name: Push to DVC Remote
+        run: dvc push

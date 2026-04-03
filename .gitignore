@@ -1,0 +1,25 @@
+# Credentials
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Data & Models (Managed by DVC)
+/data/*
+!/data/*.dvc
+!/data/.gitignore
+/src/model/artifacts/*
+
+# MLflow & Logs
+mlruns/
+*.log
+.DS_Store
+Thumbs.db

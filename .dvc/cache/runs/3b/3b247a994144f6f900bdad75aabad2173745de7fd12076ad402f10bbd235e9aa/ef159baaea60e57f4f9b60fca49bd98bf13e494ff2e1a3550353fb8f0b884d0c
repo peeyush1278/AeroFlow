@@ -1,0 +1,15 @@
+cmd: python src/model/train.py
+deps:
+- path: data/btc-usd_historical.csv
+  hash: md5
+  md5: 3847d305ebcd9311aeb763b8e3baf341
+  size: 185734
+- path: src/model/train.py
+  hash: md5
+  md5: ac8ddd0b06d697ceba1c4abe512c27da
+  size: 2246
+outs:
+- path: src/model/artifacts/xgb_model.json
+  hash: md5
+  md5: 96ed05aafec8cc06d7632f3153ab4a89
+  size: 1436028

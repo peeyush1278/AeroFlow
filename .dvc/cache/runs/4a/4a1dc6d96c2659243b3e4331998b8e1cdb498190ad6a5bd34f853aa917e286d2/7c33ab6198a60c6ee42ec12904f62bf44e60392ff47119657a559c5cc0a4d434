@@ -1,0 +1,11 @@
+cmd: python src/data/ingest_data.py --symbol BTC-USD
+deps:
+- path: src/data/ingest_data.py
+  hash: md5
+  md5: de2e3073a324766df5ed40b0973610d9
+  size: 1134
+outs:
+- path: data/btc-usd_historical.csv
+  hash: md5
+  md5: 3847d305ebcd9311aeb763b8e3baf341
+  size: 185734
