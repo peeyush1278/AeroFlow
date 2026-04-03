@@ -12,3 +12,19 @@ stages:
       hash: md5
       md5: 3847d305ebcd9311aeb763b8e3baf341
       size: 185734
+  train:
+    cmd: python src/model/train.py
+    deps:
+    - path: data/btc-usd_historical.csv
+      hash: md5
+      md5: 3847d305ebcd9311aeb763b8e3baf341
+      size: 185734
+    - path: src/model/train.py
+      hash: md5
+      md5: d8870abf8a55e3e80468f839e600a30b
+      size: 2354
+    outs:
+    - path: src/model/artifacts/xgb_model.json
+      hash: md5
+      md5: 60fdbbe8021531025833d5a99255a24f
+      size: 1462456

@@ -11,5 +11,5 @@ stages:
       - data/btc-usd_historical.csv
       - src/model/train.py
     metrics:
-      - src/model/artifacts/prophet_model.json:
+      - src/model/artifacts/xgb_model.json:
           cache: false
